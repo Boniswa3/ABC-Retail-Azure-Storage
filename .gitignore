@@ -1,0 +1,29 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+bin/
+obj/
+
+# Debug / Release
+Debug/
+Release/
+
+# Test results
+TestResults/
+
+# ASP.NET Core
+appsettings.Development.json
+
+# User-specific files
+*.rsuser
+
+# Visual Studio Code
+.vscode/
+
+# Logs
+*.log
