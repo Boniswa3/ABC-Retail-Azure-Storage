@@ -4,56 +4,116 @@
     ViewData["Title"] = "Products";
 }
 
-<h2>Products</h2>
+<div class="page-header">
+    <div>
+        <h1>Products</h1>
+       
+    </div>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">
-        Add New Product
-    </a>
-</p>
+    <div>
+        <a asp-action="Create" class="btn btn-primary">
+            + Add New Product
+        </a>
+    </div>
+</div>
 
-<table class="table table-bordered table-striped align-middle">
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Product Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Stock Quantity</th>
-        </tr>
-    </thead>
+<div class="content-card">
 
-    <tbody>
+    <div class="content-card-header">
+        <div>
+            <h3>Product Catalogue</h3>
+            <p>View products, prices, images and available stock.</p>
+        </div>
 
-        @foreach (var product in Model)
-        {
-            <tr>
-                <td>
-                    @if (!string.IsNullOrEmpty(product.ImageUrl))
-                    {
-                        <img src="@product.ImageUrl"
-                             width="120"
-                             height="120"
-                             style="object-fit:cover;"
-                             alt="@product.ProductName" />
-                    }
-                    else
-                    {
-                        <span>No Image</span>
-                    }
-                </td>
+        <span class="record-count">
+            @Model.Count product@(Model.Count == 1 ? "" : "s")
+        </span>
+    </div>
 
-                <td>@product.ProductName</td>
+    @if (Model != null && Model.Any())
+    {
+        <div class="product-grid">
 
-                <td>@product.Description</td>
+            @foreach (var product in Model)
+            {
+                <div class="product-card">
 
-                <td>R @product.Price</td>
+                    <div class="product-image-container">
+                        @if (!string.IsNullOrEmpty(product.ImageUrl))
+                        {
+                            <img src="@product.ImageUrl"
+                                 class="product-image"
+                                 alt="@product.ProductName" />
+                        }
+                        else
+                        {
+                            <div class="product-no-image">
+                                <span>📦</span>
+                                <small>No Image</small>
+                            </div>
+                        }
+                    </div>
 
-                <td>@product.StockQuantity</td>
+                    <div class="product-card-body">
 
-            </tr>
-        }
+                        <h3 class="product-title">
+                            @product.ProductName
+                        </h3>
 
-    </tbody>
+                        <p class="product-description">
+                            @product.Description
+                        </p>
 
-</table>
+                        <div class="product-details">
+
+                            <div>
+                                <span class="product-label">Price</span>
+                                <strong class="product-price">
+                                    R @product.Price
+                                </strong>
+                            </div>
+
+                            <div class="stock-info">
+                                <span class="product-label">Stock</span>
+
+                                @if (product.StockQuantity > 0)
+                                {
+                                    <span class="stock-badge">
+                                        @product.StockQuantity available
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="stock-badge out-of-stock">
+                                        Out of stock
+                                    </span>
+                                }
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+    else
+    {
+        <div class="empty-state">
+            <div class="empty-icon">📦</div>
+
+            <h3>No Products Found</h3>
+
+            <p>
+                There are currently no products in the catalogue.
+            </p>
+
+            <a asp-action="Create" class="btn btn-primary">
+                Add Your First Product
+            </a>
+        </div>
+    }
+
+</div>

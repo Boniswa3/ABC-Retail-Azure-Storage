@@ -1,8 +1,239 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="dashboard">
+
+    <!-- Welcome Section -->
+    <div class="dashboard-hero mb-4">
+        <div>
+            <p class="dashboard-label">ABC RETAIL MANAGEMENT SYSTEM</p>
+
+            <h1>Welcome to ABC Retail</h1>
+
+            <p class="dashboard-description">
+                Manage customers, products, orders and documents
+                from one centralised cloud-based platform.
+            </p>
+        </div>
+
+        <div class="dashboard-hero-icon">
+            <span>ABC</span>
+        </div>
+    </div>
+
+
+    <!-- Overview Cards -->
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-6 col-lg-3">
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    👥
+                </div>
+
+                <div>
+                    <h3>Customers</h3>
+                    <p>Manage customer information</p>
+
+                    <a asp-controller="Customer"
+                       asp-action="Index"
+                       class="dashboard-link">
+                        View Customers →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-3">
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    📦
+                </div>
+
+                <div>
+                    <h3>Products</h3>
+                    <p>Manage retail products</p>
+
+                    <a asp-controller="Product"
+                       asp-action="Index"
+                       class="dashboard-link">
+                        View Products →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-3">
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    🛒
+                </div>
+
+                <div>
+                    <h3>Orders</h3>
+                    <p>Create and manage orders</p>
+
+                    <a asp-controller="Order"
+                       asp-action="Create"
+                       class="dashboard-link">
+                        Create Order →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-3">
+            <div class="dashboard-card">
+
+                <div class="dashboard-card-icon">
+                    📄
+                </div>
+
+                <div>
+                    <h3>Documents</h3>
+                    <p>Manage uploaded documents</p>
+
+                    <a asp-controller="File"
+                       asp-action="Index"
+                       class="dashboard-link">
+                        View Documents →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Cloud Services Section -->
+    <div class="row g-4">
+
+        <div class="col-lg-8">
+
+            <div class="dashboard-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <h2>Cloud Services</h2>
+                        <p>
+                            Azure services supporting the ABC Retail platform
+                        </p>
+                    </div>
+
+                    <span class="status-badge">
+                        ● Online
+                    </span>
+                </div>
+
+
+                <div class="service-grid">
+
+                    <div class="service-item">
+                        <div class="service-icon">☁</div>
+
+                        <div>
+                            <strong>Azure Tables</strong>
+                            <small>
+                                Customer, product and order data
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="service-item">
+                        <div class="service-icon">🖼</div>
+
+                        <div>
+                            <strong>Blob Storage</strong>
+                            <small>
+                                Product image storage
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="service-item">
+                        <div class="service-icon">⚡</div>
+
+                        <div>
+                            <strong>Queue Storage</strong>
+                            <small>
+                                Asynchronous order processing
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="service-item">
+                        <div class="service-icon">📁</div>
+
+                        <div>
+                            <strong>Azure Files</strong>
+                            <small>
+                                Cloud document storage
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Processed Orders -->
+        <div class="col-lg-4">
+
+            <div class="dashboard-panel quick-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <h2>Order Processing</h2>
+
+                        <p>
+                            View completed transactions
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="quick-content">
+
+                    <div class="quick-icon">
+                        ✓
+                    </div>
+
+                    <h3>Processed Orders</h3>
+
+                    <p>
+                        View orders processed through the
+                        cloud-based order processing workflow.
+                    </p>
+
+                    <a asp-controller="ProcessedOrders"
+                       asp-action="Index"
+                       class="btn btn-primary w-100">
+                        View Processed Orders
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
